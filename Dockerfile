@@ -5,11 +5,16 @@ RUN apk add --no-cache nginx \
     mariadb-common \ 
     mariadb-client\ 
     php5-fpm \
+    php5-opcache  \
+    php5-xml \
+    php5-ctype \
+    php5-gd  \
     php5-mysql \
     php5-mysqli \
     php5-pdo \
     php5-pdo_mysql \
     php5-curl \
+    php5-common \
     php5-json \
     php5-mcrypt 
 
