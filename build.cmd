@@ -1,1 +1,1 @@
-docker build . -t lemp5-alpine:latest
+docker build . -t crazyyoshi/lemp5-alpine:latest
