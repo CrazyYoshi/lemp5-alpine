@@ -1,5 +1,5 @@
 #!/bin/sh
-echo '---- CREATING & LOADING SQL DUMPS / STARTING MYSQL ----'
+echo '---- CREATING & LOADING SQL DUMPS / STARTING Mariadb ----'
 if [ -d "/run/mysqld" ]; then
     chown -R mysql:mysql /run/mysqld
 else
@@ -26,9 +26,7 @@ fi
 while ! nc -z localhost 3306; do
     sleep 1
 done
-echo '---- MYSQL AVAILABLE ----'
-echo '---- POSTFIX START ----'
-/usr/sbin/postfix start
+echo 'Mariadb available'
 echo '---- START NGINX & PHP5-FPM ----'
 pkill -f php-fpm
 pkill -f nginx
