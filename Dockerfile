@@ -11,8 +11,7 @@ RUN apk add --no-cache nginx \
     php5-pdo_mysql \
     php5-curl \
     php5-json \
-    php5-mcrypt \
-    postfix
+    php5-mcrypt 
 
 COPY run.sh /usr/sbin/run.sh
 COPY php.ini /etc/php5/php.ini
