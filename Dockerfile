@@ -28,18 +28,27 @@ RUN apk add --no-cache nginx \
     php5-json \
     php5-mcrypt 
 
-COPY run.sh /usr/sbin/run.sh
-COPY php.ini /etc/php5/php.ini
-COPY php-fpm.conf /etc/php5/php-fpm.conf
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY index.php /usr/share/nginx/html/index.php
+WORKDIR /usr/src/app
+COPY . .
 
-RUN chmod +x /usr/sbin/run.sh \
-    && mkdir -p /usr/src/sqldump
+RUN mkdir -p /etc/nginx/sites-enabled/ \
+    && mkdir -p /etc/nginx/conf.d/global \
+    && mkdir -p /usr/share/nginx/html \
+    && mkdir -p /usr/src/sqldump \
+    && cp nginx.conf /etc/nginx/nginx.conf \
+    && cp example.conf /etc/nginx/sites-enabled/example.conf \
+    && cp php.conf /etc/nginx/conf.d/global/php.conf \
+    && cp php.ini /etc/php5/php.ini \
+    && cp php-fpm.conf /etc/php5/php-fpm.conf \
+    && cp index.php /usr/share/nginx/html/index.php \
+    && cp run.sh /usr/sbin/run.sh \
+    && chmod +x /usr/sbin/run.sh \
+    && rm -rf /usr/src/app
 
 VOLUME /usr/src/sqldump
-VOLUME /etc/nginx
+VOLUME /etc/nginx/sites-enabled/
 VOLUME /usr/share/nginx/html
+VOLUME /var/lib/mysql/
 
 EXPOSE 80
 
