@@ -19,8 +19,10 @@ else
     /usr/bin/mysql --user=root -e \
         "UPDATE mysql.user SET plugin='mysql_native_password'; FLUSH PRIVILEGES"
     for i in /usr/src/sqldump/*.sql; do
-        echo "Loading sql dump : $i"
-        /usr/bin/mysql <$i
+        if [ -f "$i" ]; then
+            echo "Loading sql dump : $i"
+            /usr/bin/mysql <$i
+        fi
     done
 fi
 while ! nc -z localhost 3306; do
