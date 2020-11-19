@@ -30,8 +30,4 @@ while ! nc -z localhost 3306; do
 done
 echo 'Mariadb available'
 echo '---- START NGINX & PHP5-FPM ----'
-
-pkill -f php-fpm
-pkill -f nginx
-php-fpm5 -D
 nginx -g 'daemon off;'
