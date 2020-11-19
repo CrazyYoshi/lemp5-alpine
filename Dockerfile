@@ -50,6 +50,6 @@ VOLUME /etc/nginx/sites-enabled/
 VOLUME /usr/share/nginx/html
 VOLUME /var/lib/mysql/
 
-EXPOSE 80
+EXPOSE 80 81 82 83 84 85 86 87 88 89 90
 
 ENTRYPOINT ["/usr/sbin/run.sh"]
